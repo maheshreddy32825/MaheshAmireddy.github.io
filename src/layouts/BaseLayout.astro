@@ -1,0 +1,30 @@
+---
+const { children, title, description } = Astro.props;
+---
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title ? `${title} · Your Name` : 'Your Name'}</title>
+    <meta name="description" content={description || "Your short tagline"} />
+    <link rel="icon" href="/assets/favicon.ico" />
+  </head>
+  <body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+    <div class="min-h-screen max-w-4xl mx-auto px-6 py-12">
+      <header class="flex items-center justify-between mb-10">
+        <a href="/" class="text-xl font-semibold">Your Name</a>
+        <nav class="space-x-4 text-sm">
+          <a href="/projects">Projects</a>
+          <a href="/blog">Blog</a>
+          <a href="https://github.com/yourhandle" target="_blank">GitHub</a>
+        </nav>
+      </header>
+
+      <main>{children}</main>
+
+      <footer class="mt-16 text-sm text-slate-500">
+        © {new Date().getFullYear()} Your Name — Built with Astro + Tailwind
+      </footer>
+    </div>
+  </body>
+</html>
