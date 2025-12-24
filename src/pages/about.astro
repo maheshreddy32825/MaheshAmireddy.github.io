@@ -1,17 +1,224 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Skills from '../components/Skills.astro';
+import Certifications from '../components/Certifications.astro';
+import Timeline from '../components/Timeline.astro';
+import { experience, education } from '../data/experience';
+import { getActualEmail } from '../lib/email-obfuscation';
+
+const email = getActualEmail();
 ---
-<BaseLayout title="About">
-  <section class="prose mx-auto space-y-4">
-    <h2>About Me</h2>
-    <p>
-      I'm a DevSecOps and Cloud Engineer building automated pipelines, secure cloud infrastructure, and innovative AI projects.
-    </p>
-    <p>
-      I focus on AWS security, CI/CD automation, and infrastructure as code.
-    </p>
-    <p>
-      <a href="/resume.pdf" target="_blank" class="underline text-indigo-600 hover:text-indigo-800">Download my resume</a>
-    </p>
+
+<BaseLayout title="About" description="DevOps, Cloud & SRE Engineer - Learn more about my background and experience">
+  <!-- About Hero -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+        About Me
+      </h1>
+      
+      <div class="grid md:grid-cols-3 gap-12 py-12">
+        <div class="md:col-span-2">
+          <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            I'm a full-stack DevOps, Cloud, and SRE Engineer with 8+ years of hands-on experience building and managing scalable cloud infrastructure across AWS, Azure, and Kubernetes environments.
+          </p>
+
+          <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            My journey began in 2017 with a passion for infrastructure automation. Over the years, I've evolved from a DevOps engineer to a full-stack cloud architect, specializing in:
+          </p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-teal-600 dark:text-teal-400 text-2xl leading-none">☸️</span>
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white">Kubernetes & Container Orchestration</h4>
+                <p class="text-slate-600 dark:text-slate-400">Building and managing EKS, AKS, and on-prem Kubernetes clusters</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-teal-600 dark:text-teal-400 text-2xl leading-none">🔧</span>
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white">Infrastructure as Code</h4>
+                <p class="text-slate-600 dark:text-slate-400">Terraform, CloudFormation, and automated deployment pipelines</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-teal-600 dark:text-teal-400 text-2xl leading-none">📊</span>
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white">SRE & Observability</h4>
+                <p class="text-slate-600 dark:text-slate-400">SLIs/SLOs, monitoring, and incident management at scale</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-teal-600 dark:text-teal-400 text-2xl leading-none">☁️</span>
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white">Multi-Cloud Architecture</h4>
+                <p class="text-slate-600 dark:text-slate-400">AWS and Azure - cost optimization and security</p>
+              </div>
+            </li>
+          </ul>
+
+          <p class="text-slate-600 dark:text-slate-400 mb-6">
+            I believe in automation, reliability, and continuous improvement. My philosophy is simple: <strong class="text-slate-900 dark:text-white">automate everything, monitor everything, and never stop learning.</strong>
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-400">
+            When I'm not working on cloud infrastructure, you'll find me hiking mountains, exploring nature, or learning the latest DevOps tools and practices.
+          </p>
+        </div>
+
+        <!-- Sidebar Stats -->
+        <div class="md:col-span-1">
+          <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 border border-teal-200 dark:border-slate-700 space-y-6">
+            <div class="text-center pb-6 border-b border-teal-200 dark:border-slate-700">
+              <div class="text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">8+</div>
+              <p class="text-slate-700 dark:text-slate-300 font-semibold">Years of Experience</p>
+            </div>
+
+            <div class="text-center pb-6 border-b border-teal-200 dark:border-slate-700">
+              <div class="text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">2</div>
+              <p class="text-slate-700 dark:text-slate-300 font-semibold">Cloud Certifications</p>
+            </div>
+
+            <div class="text-center pb-6 border-b border-teal-200 dark:border-slate-700">
+              <div class="text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">15+</div>
+              <p class="text-slate-700 dark:text-slate-300 font-semibold">Projects Delivered</p>
+            </div>
+
+            <div class="text-center">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                <strong>Currently looking for:</strong> Full-time DevOps/SRE roles
+              </p>
+              <a href="mailto:{email}" class="inline-block px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors text-sm">
+                Let's Talk
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-12 px-6 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Professional Experience</h2>
+      
+      <div class="space-y-8">
+        {experience.map((job) => (
+          <div class="bg-white dark:bg-slate-800 rounded-lg p-8 border border-slate-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-400 transition-all">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">{job.title}</h3>
+                <p class="text-lg text-teal-600 dark:text-teal-400 font-semibold">{job.company} | {job.client}</p>
+                <p class="text-sm text-slate-600 dark:text-slate-400">{job.location}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">{job.startDate} - {job.endDate}</p>
+                <p class="text-xs text-slate-600 dark:text-slate-400">{job.duration}</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 dark:text-slate-400 mb-4 italic">{job.description}</p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold text-slate-900 dark:text-white mb-3">Key Achievements</h4>
+              <ul class="space-y-2">
+                {job.achievements.map((achievement) => (
+                  <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                    <span class="text-teal-600 dark:text-teal-400 flex-shrink-0">▸</span>
+                    <span>{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-2 text-sm">Technologies</h4>
+                <div class="flex flex-wrap gap-2">
+                  {job.technologies.map((tech) => (
+                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-xs text-slate-700 dark:text-slate-300">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-2 text-sm">Key Metrics</h4>
+                <div class="space-y-1 text-sm text-slate-700 dark:text-slate-300">
+                  {job.metrics && Object.entries(job.metrics).map(([key, value]) => (
+                    <p>✓ {key.replace(/([A-Z])/g, ' $1')}: <strong>{value}</strong></p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <Timeline />
+
+  <!-- Skills Section -->
+  <section class="py-12 px-6 bg-slate-50 dark:bg-slate-900">
+    <Skills />
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="py-12 px-6">
+    <Certifications />
+  </section>
+
+  <!-- Education Section -->
+  <section class="py-12 px-6 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Education</h2>
+      
+      <div class="space-y-6">
+        {education.map((edu) => (
+          <div class="bg-white dark:bg-slate-800 rounded-lg p-8 border border-slate-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-400 transition-all">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">{edu.degree}</h3>
+                <p class="text-teal-600 dark:text-teal-400 font-semibold">{edu.field}</p>
+              </div>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 rounded-full text-sm font-semibold whitespace-nowrap ml-4">{edu.startDate} – {edu.year}</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">{edu.institution}</p>
+            {edu.gpa && (
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                <span class="font-semibold">GPA:</span> {edu.gpa}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 p-6 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+        <h3 class="font-semibold text-slate-900 dark:text-white mb-4">Continuous Learning & Training</h3>
+        <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+          <li>• AWS Architecture & DevOps - Hands-on labs and certifications</li>
+          <li>• Kubernetes Administration - Deep dive into container orchestration</li>
+          <li>• Terraform & Infrastructure as Code - Advanced patterns and best practices</li>
+          <li>• SRE Principles - SLIs/SLOs, observability, and incident management</li>
+          <li>• Cloud Security & Compliance - SOC 2, PCI-DSS, and IaC security scanning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Download -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg p-8 text-white text-center">
+      <h2 class="text-3xl font-bold mb-4">Want More Details?</h2>
+      <p class="text-lg opacity-90 mb-6">Download my full resume for a comprehensive overview of my skills, experience, and achievements.</p>
+      <a href="/resume.pdf" download class="inline-block px-8 py-3 bg-white text-teal-600 font-bold rounded-lg hover:bg-slate-100 transition-colors">
+        📥 Download Resume (PDF)
+      </a>
+    </div>
   </section>
 </BaseLayout>

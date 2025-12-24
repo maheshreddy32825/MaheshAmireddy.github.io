@@ -1,17 +1,113 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { projects } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects, industryProjects } from '../data/projects';
 ---
-<BaseLayout title="Projects">
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {projects.map(project => (
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">
-          <a href={project.url} target="_blank" class="hover:text-indigo-600">{project.name}</a>
-        </h3>
-        <p class="text-sm text-gray-500 mb-2">{project.category}</p>
-        <p>{project.description}</p>
+
+<BaseLayout title="Projects" description="My cloud, DevOps, and infrastructure projects">
+  <!-- Header -->
+  <section class="py-12 px-6 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-900 dark:to-slate-950 text-white">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-5xl lg:text-6xl font-bold mb-4">My Projects</h1>
+      <p class="text-xl text-slate-300">
+        A showcase of my cloud infrastructure, DevOps automation, and personal projects
+      </p>
+    </div>
+  </section>
+
+  <!-- Industry Projects -->
+  <section class="py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+        Top Client Projects
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-3">
+        Major cloud transformation and infrastructure projects
+      </p>
+      <p class="text-slate-600 dark:text-slate-400 mb-12">
+        <span class="font-semibold text-slate-900 dark:text-white">End Clients:</span> USAA, AT&T, Exxon Mobil, Abbott Labs, SAP SuccessFactors
+      </p>
+
+      <div class="space-y-8">
+        {industryProjects.map((proj) => (
+          <div class="bg-white dark:bg-slate-800 rounded-lg p-8 border border-slate-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-400 transition-all">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <span class="inline-block px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 rounded-full text-xs font-semibold mb-2">
+                  {proj.type}
+                </span>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">{proj.title}</h3>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 font-semibold">{proj.period}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-6">
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-3">Impact & Achievements</h4>
+                <ul class="space-y-2">
+                  {proj.impact.map((item) => (
+                    <li class="flex gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="text-teal-600 dark:text-teal-400 flex-shrink-0">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-3">Tech Stack</h4>
+                <div class="flex flex-wrap gap-2">
+                  {proj.tech.map((tech) => (
+                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
+    </div>
+  </section>
+
+  <!-- Open Source & Personal Projects -->
+  <section class="py-12 px-6 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+        Open Source & Personal Projects
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-12">
+        GitHub repositories and learning projects
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {projects.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Stats -->
+  <section class="py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 border border-teal-200 dark:border-slate-700 text-center">
+          <div class="text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">36</div>
+          <p class="text-slate-700 dark:text-slate-300 font-semibold">GitHub Repos</p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 border border-teal-200 dark:border-slate-700 text-center">
+          <div class="text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">8</div>
+          <p class="text-slate-700 dark:text-slate-300 font-semibold">Delivered Projects</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 border border-teal-200 dark:border-slate-700 text-center">
+          <div class="text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2">30+</div>
+          <p class="text-slate-700 dark:text-slate-300 font-semibold">Technologies</p>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>

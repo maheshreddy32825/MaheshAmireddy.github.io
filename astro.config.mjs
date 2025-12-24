@@ -1,8 +1,13 @@
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://maheshreddy32825.github.io',
+  site: 'https://maheshreddy32825.vercel.app',
   output: 'static',
-  outDir: './',        // ← output directly to repo root
-  trailingSlash: 'always'
+  integrations: [react()],
+  vite: {
+    ssr: {
+      external: ['three']
+    }
+  }
 });

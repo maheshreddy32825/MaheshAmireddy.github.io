@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-blog",
+  "name": "mahesh-portfolio",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -9,13 +9,21 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "^4.0.0",
-    "dayjs": "^1.11.0"
+    "astro": "^5.16.6",
+    "dayjs": "^1.11.0",
+    "framer-motion": "^10.16.16",
+    "three": "^0.160.0",
+    "xml2js": "^0.6.2",
+    "feed": "^4.2.2",
+    "@astrojs/react": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.19",
     "autoprefixer": "^10.0.0",
     "postcss": "^8.4.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "prettier": "^3.1.0"
   }
 }

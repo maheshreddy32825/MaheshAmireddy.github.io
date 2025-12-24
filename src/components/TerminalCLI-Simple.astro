@@ -1,0 +1,194 @@
+---
+// Simple Terminal without React - using plain HTML + Astro
+---
+
+<div class="w-full bg-slate-950 border border-slate-800 rounded-lg overflow-hidden shadow-2xl">
+  {/* Terminal Header */}
+  <div class="bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center gap-2">
+    <div class="flex gap-2">
+      <div class="w-3 h-3 rounded-full bg-red-500"></div>
+      <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+      <div class="w-3 h-3 rounded-full bg-green-500"></div>
+    </div>
+    <span class="text-xs text-slate-500 ml-4">portfolio-terminal — bash — 80x24</span>
+  </div>
+
+  {/* Terminal Content */}
+  <div id="terminal-output" class="p-4 font-mono text-sm text-slate-200 h-96 overflow-y-auto bg-slate-950 space-y-1" style="font-family: 'Courier New, monospace';">
+    <div class="text-slate-300">╔═══════════════════════════════════════════════════════════╗</div>
+    <div class="text-slate-300">║  Welcome to Mahesh Reddy's Terminal Portfolio  v1.0       ║</div>
+    <div class="text-slate-300">║  DevOps | Cloud | SRE Engineer                            ║</div>
+    <div class="text-slate-300">╚═══════════════════════════════════════════════════════════╝</div>
+    <div class="text-slate-300">Type "help" to see available commands</div>
+    <div class="flex items-center gap-2 text-cyan-400">
+      <span>$</span>
+      <input
+        id="terminal-input"
+        type="text"
+        placeholder=""
+        class="flex-1 bg-transparent outline-none text-cyan-400"
+        spellcheck="false"
+        autofocus
+      />
+    </div>
+  </div>
+
+  {/* Terminal Footer */}
+  <div class="bg-slate-900 border-t border-slate-800 px-4 py-2 text-xs text-slate-500">
+    Type "help" for commands • Use ↑↓ to navigate history
+  </div>
+</div>
+
+<script>
+  const terminalOutput = document.getElementById('terminal-output');
+  const terminalInput = document.getElementById('terminal-input');
+  let history: string[] = [];
+  let historyIndex: number | null = null;
+
+  const commands: { [key: string]: string[] } = {
+    help: [
+      'Available commands:',
+      '  help              - Show this help message',
+      '  about             - About me',
+      '  skills            - View technical skills',
+      '  experience        - View experience summary',
+      '  projects          - View featured projects',
+      '  certifications    - View certifications',
+      '  contact           - Contact information',
+      '  clear             - Clear terminal',
+      '  social            - Social media links'
+    ],
+    about: [
+      'About Mahesh Reddy:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      'Full-Stack DevOps, Cloud & SRE Engineer with 8+ years',
+      'of experience building scalable multi-cloud platforms.',
+      '',
+      'Expertise: AWS | Azure | Kubernetes | Terraform',
+      'Philosophy: Automation, Reliability, and DevOps Excellence'
+    ],
+    skills: [
+      'Technical Skills:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '☁️  Cloud: AWS, Azure',
+      '☸️  Orchestration: Kubernetes, Docker, Helm',
+      '🔧 IaC: Terraform, CloudFormation, Ansible',
+      '📊 Observability: Prometheus, Grafana, Splunk, Datadog, ELK',
+      '🔒 Security: Veracode, Container Scanning, SIEM',
+      '🚀 CI/CD: Jenkins, GitLab CI'
+    ],
+    experience: [
+      'Experience:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '2024-Present: DevOps Engineer @ USAA (AWS EKS)',
+      '2019-2024:   DevOps Engineer @ AT&T (Multi-cloud)',
+      '             • 25% cost reduction',
+      '2017-2019:   Cloud Infrastructure Engineer',
+      '',
+      '→ View full timeline: /about'
+    ],
+    projects: [
+      'Featured Projects:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '📦 Kubernetes Learning Guide',
+      '   Comprehensive K8s deployment patterns',
+      '📦 AWS Infrastructure Automation',
+      '   Terraform modules & CloudFormation templates',
+      '📦 Getting Started App',
+      '   Full CI/CD pipeline with Docker & Jenkins'
+    ],
+    certifications: [
+      'Certifications:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '✓ AWS Certified Solutions Architect - Associate (2022)',
+      '✓ Azure Administrator Associate (2023)',
+      '⟳ Certified Kubernetes Administrator (CKA) - In Progress'
+    ],
+    contact: [
+      'Get in Touch:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '📧 Email: amireddym0144@gmail.com',
+      '🔗 LinkedIn: linkedin.com/in/amireddym',
+      '💻 GitHub: github.com/maheshreddy32825',
+      '✍️  Medium: medium.com/@mahesh.r0608'
+    ],
+    social: [
+      'Social Media & Links:',
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+      '🐙 GitHub: github.com/maheshreddy32825',
+      '💼 LinkedIn: linkedin.com/in/amireddym',
+      '📝 Medium: medium.com/@mahesh.r0608',
+      '📧 Email: amireddym0144@gmail.com'
+    ],
+    clear: []
+  };
+
+  function addLine(content: string, type: 'input' | 'output' = 'output') {
+    const div = document.createElement('div');
+    div.textContent = content;
+    if (type === 'input') {
+      div.className = 'text-cyan-400';
+    } else {
+      div.className = 'text-slate-300';
+    }
+    terminalOutput!.insertBefore(div, terminalOutput!.lastElementChild);
+  }
+
+  function handleCommand(cmd: string) {
+    const trimmed = cmd.trim().toLowerCase();
+    
+    // Add input line
+    addLine(`$ ${cmd}`, 'input');
+    
+    if (trimmed === 'clear') {
+      terminalOutput!.innerHTML = '';
+      terminalOutput!.innerHTML = '<div class="flex items-center gap-2 text-cyan-400"><span>$</span><input id="terminal-input" type="text" class="flex-1 bg-transparent outline-none text-cyan-400" autofocus /></div>';
+    } else if (commands[trimmed]) {
+      commands[trimmed].forEach(line => {
+        if (line) addLine(line);
+      });
+    } else if (trimmed) {
+      addLine(`bash: ${cmd}: command not found`);
+      addLine('Type "help" for available commands');
+    }
+
+    // Scroll to bottom
+    terminalOutput!.scrollTop = terminalOutput!.scrollHeight;
+    
+    // Store in history
+    if (trimmed) history.push(cmd);
+    historyIndex = null;
+  }
+
+  terminalInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const input = terminalInput as HTMLInputElement;
+      handleCommand(input.value);
+      input.value = '';
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const input = terminalInput as HTMLInputElement;
+      if (history.length > 0) {
+        const newIndex = historyIndex === null ? history.length - 1 : Math.max(0, historyIndex - 1);
+        historyIndex = newIndex;
+        input.value = history[newIndex];
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const input = terminalInput as HTMLInputElement;
+      if (historyIndex !== null) {
+        if (historyIndex === history.length - 1) {
+          historyIndex = null;
+          input.value = '';
+        } else {
+          historyIndex++;
+          input.value = history[historyIndex];
+        }
+      }
+    }
+  });
+
+  // Focus input on load
+  terminalInput?.focus();
+</script>
