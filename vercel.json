@@ -1,8 +1,5 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm ci",
-  "env": {
-    "ANALYTICS_ID": "@GA_MEASUREMENT_ID"
-  }
+  "installCommand": "npm ci"
 }
