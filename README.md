@@ -1,52 +1,75 @@
-# Mahesh Reddy - Portfolio Site
+# 🚀 Mahesh Amireddy - DevOps & Cloud Engineering Portfolio
 
-A modern, interactive personal portfolio showcasing my expertise in DevOps, Cloud & SRE Engineering. Built with Astro, Tailwind CSS, and featuring interactive components.
+A **modern, interactive personal portfolio** showcasing 8+ years of expertise in DevOps, Cloud Infrastructure, Kubernetes, and SRE Engineering. Built with **Astro 5**, **Tailwind CSS**, **React**, and **TypeScript**.
 
-## 🚀 Features
+**Live Site**: https://maheshamireddy-portfolio.vercel.app
 
-### Interactive Components
-- **Hero Section** with animated cloud architecture visualization
-- **Terminal CLI** - Type commands like `help`, `skills`, `projects`, etc.
-- **Command Palette** - Press Cmd+K to quickly navigate (like VS Code)
-- **Career Timeline** - Visual timeline of your professional journey
-- **Skills & Certifications** - Proficiency ratings and credential display
-- **Dark Mode Toggle** - Seamless theme switching
+---
 
-### Content Sections
-- **About** - Comprehensive background, experience, and education
-- **Projects** - Showcase of GitHub repos and client projects
-- **Blog** - Auto-synced from Medium via RSS feed
-- **Resume** - Downloadable PDF with embedded viewer
+## ✨ Features & Capabilities
 
-### Technical Excellence
-- **100% Responsive** - Mobile-first design
-- **Dark Mode Support** - Built-in light/dark theme toggle
-- **Lighthouse Optimized** - Performance score: 95+
-- **SEO Ready** - Meta tags, Open Graph, structured data
-- **Fast Loading** - Astro static site generation
-- **Analytics Ready** - Google Analytics integration
+### 🎨 Interactive Components
+- **Hero Section** - Animated gradient text and cloud architecture
+- **Interactive Terminal** - Type commands (`help`, `skills`, `projects`, `social`, etc.)
+- **Command Palette** - Press Cmd+K (like VS Code) for instant navigation
+- **Career Timeline** - Visual timeline of professional journey (2017-2025)
+- **Dark/Light Theme** - Seamless theme toggle with localStorage persistence
+- **Responsive Design** - 100% mobile-first, works on all devices
+
+### 📄 Content Pages
+- **Home** - Hero, terminal, metrics, and quick navigation
+- **About** - Professional background, 5 specializations, personality, timeline, certifications
+- **Projects** - Dynamic GitHub pinned repos + case studies with impact metrics
+- **Blog** - Auto-synced Medium articles via RSS feed + writing motivation
+
+### 🔧 Technical Excellence
+- **Astro 5.16.6** - Static site generation for blazing-fast performance
+- **Tailwind CSS 3.4** - Modern utility-first styling with dark mode
+- **TypeScript** - Full type safety throughout codebase
+- **React Components** - Interactive elements (Terminal, Command Palette)
+- **Google Analytics 4** - Real-time visitor tracking, outbound clicks, scroll depth
+- **GitHub API Integration** - Dynamic pinned repos display
+- **RSS Feed** - Auto-synced blog articles from Medium
+- **Lighthouse Score**: 95+ (Performance, Accessibility, SEO)
+- **SEO Ready** - Meta tags, Open Graph, structured data, sitemaps
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Astro 4.0+
-- **Styling**: Tailwind CSS + CSS-in-JS
-- **Interactive Components**: React (via Astro integration)
-- **Animations**: Framer Motion, CSS animations
-- **Icons**: SVG + Unicode emoji
-- **Deployment**: Vercel (recommended) or GitHub Pages
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Astro 5.16.6 |
+| **Styling** | Tailwind CSS 3.4 |
+| **Components** | React 18 |
+| **Language** | TypeScript |
+| **Analytics** | Google Analytics 4 |
+| **Deployment** | Vercel |
+| **Icons** | SVG + Unicode emoji |
+| **Animations** | CSS + Keyframes |
 
 ## 📋 Prerequisites
 
-- Node.js 18+ (with npm or yarn)
-- Git
-- A GitHub account (for deployment)
-- Google Analytics account (optional, for analytics)
+- **Node.js** 18+ (check: `node --version`)
+- **npm** or **yarn**
+- **Git**
+- GitHub account (for pushing code)
+
+## 📚 Documentation
+
+| Guide | Purpose |
+|-------|---------|
+| [QUICKSTART.md](QUICKSTART.md) | Get running locally in 5 minutes |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Deploy to Vercel, GitHub Pages, or custom domain |
+| [CONTENT_UPDATE.md](CONTENT_UPDATE.md) | Update resume, experience, skills, projects, blog |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Fix common issues |
+| [IMPLEMENTATION.md](IMPLEMENTATION.md) | Technical architecture & component details |
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### 1. Clone & Install
 
 ```bash
+git clone https://github.com/maheshreddy32825/mahesh-portfolio.git
+cd mahesh-portfolio
 npm install
 # or
 yarn install

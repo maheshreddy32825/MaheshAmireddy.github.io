@@ -1,51 +1,229 @@
-# 🚀 Quick Start Guide
+# 🚀 Quick Start Guide (5 Minutes)
 
-Get your portfolio live in **5 minutes**!
+Get your portfolio running locally in 5 minutes!
 
-## Step 1: Install Node.js (if not already installed)
+---
 
-**macOS:**
+## ⚡ Prerequisites
+
+- **Node.js** 18+ (check: `node --version`)
+- **Git** (check: `git --version`)
+- A terminal/command line
+
+---
+
+## Step 1: Clone the Repository (1 minute)
+
 ```bash
-brew install node
+git clone https://github.com/maheshreddy32825/mahesh-portfolio.git
+cd mahesh-portfolio
 ```
 
-**Windows/Linux:** Download from https://nodejs.org (LTS version)
+---
 
-Verify: `node --version` (should be 18+)
-
-## Step 2: Install Dependencies
+## Step 2: Install Dependencies (2 minutes)
 
 ```bash
-cd /path/to/maheshreddy32825.github.io
 npm install
 ```
 
-## Step 3: Test Locally
+**Troubleshooting:**
+```bash
+# If install fails:
+npm install --legacy-peer-deps
+```
+
+---
+
+## Step 3: Run Locally (1 minute)
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000 in your browser ✨
-
-### Try These:
-- Click on "About", "Projects", "Blog" pages
-- Type in the Terminal: "help" → press Enter
-- Press Cmd+K (or Ctrl+K) to open Command Palette
-- Click dark mode toggle in header
-- Test on mobile (Dev Tools → Toggle Device Toolbar)
-
-## Step 4: Add Google Analytics (Optional but Recommended)
-
-1. Go to https://analytics.google.com
-2. Create new GA4 property
-3. Copy your **Measurement ID** (format: G-XXXXXXXXXX)
-4. Create `.env.local` file in project root:
+**Output:**
 ```
+  🚀 Astro v5.16.6 started in 234ms
+  
+  ▶ Local:    http://localhost:3000/
+  ▶ Network:  [your IP]:3000/
+```
+
+**Open in browser**: http://localhost:3000
+
+---
+
+## Step 4: Explore Your Portfolio
+
+### 🏠 Home Page
+- See your hero section, terminal, and metrics
+- Try typing commands in the terminal:
+  - `help` - See all commands
+  - `skills` - See your tech stack
+  - `projects` - List your projects
+  - `social` - Your social links
+
+### 📄 About Page
+- Click "About" in header
+- See your journey, specializations, timeline, certifications
+
+### 🚀 Projects Page
+- Click "Projects" in header
+- See GitHub pinned repos (auto-fetched)
+- See case studies with metrics
+
+### 📚 Blog Page
+- Click "Blog" in header
+- See auto-synced Medium articles
+- Topics and writing motivation
+
+### 🌙 Dark Mode
+- Click sun/moon icon in header
+- Theme toggle works everywhere
+
+### 🎨 Responsive Design
+- Open DevTools: F12 or Cmd+Option+I
+- Click Toggle Device Toolbar (Cmd+Shift+M)
+- Test on mobile, tablet, desktop
+
+---
+
+## Stop the Server
+
+```bash
+# Press Ctrl+C in terminal
+```
+
+---
+
+## Next Steps
+
+### 🚀 Ready to Deploy?
+→ See [DEPLOYMENT.md](DEPLOYMENT.md)
+
+### ✏️ Want to Update Content?
+→ See [CONTENT_UPDATE.md](CONTENT_UPDATE.md)
+
+### 🆘 Something Broken?
+→ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
+### 🏗️ Need Technical Details?
+→ See [IMPLEMENTATION.md](IMPLEMENTATION.md)
+
+---
+
+## Common Commands
+
+```bash
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Check for errors
+npx tsc --noEmit
+
+# Stop server
+Ctrl+C
+```
+
+---
+
+## File Structure Quick Guide
+
+```
+mahesh-portfolio/
+├── src/pages/          # Home, About, Blog, Projects pages
+├── src/components/     # Reusable components
+├── src/data/           # Your content (experience, skills, projects)
+├── src/layouts/        # Header, footer, base layout
+├── public/             # Static files (favicon, resume.pdf, etc.)
+└── README.md           # Full documentation
+```
+
+---
+
+## Environment Setup (Optional but Recommended)
+
+Create `.env.local` for Google Analytics and GitHub integration:
+
+```bash
+# Create file
+touch .env.local
+
+# Edit and add:
 PUBLIC_ANALYTICS_ID=G-YOUR_MEASUREMENT_ID
+GITHUB_TOKEN=[Your GitHub Personal Access Token]
+GITHUB_USERNAME=maheshreddy32825
 ```
 
-## Step 5: Deploy to Vercel (2 minutes)
+**Get GitHub Token:**
+1. Go: https://github.com/settings/tokens
+2. Create new personal access token
+3. Scopes needed: `public_repo`
+4. Copy and paste into `.env.local`
+
+---
+
+## Make Your First Change (Optional)
+
+Try editing something to see live reload:
+
+1. Open: `src/pages/index.astro`
+2. Find the hero section text
+3. Change something (e.g., the title)
+4. Save (Cmd+S)
+5. Watch your browser update instantly! 🎉
+
+---
+
+## Checklist ✅
+
+- [ ] Cloned repository
+- [ ] Ran `npm install`
+- [ ] Started dev server with `npm run dev`
+- [ ] Opened http://localhost:3000
+- [ ] Explored all 4 pages
+- [ ] Tested dark mode
+- [ ] Tested responsive design (mobile view)
+- [ ] Tested terminal commands
+- [ ] Stopped server with Ctrl+C
+
+**Done!** You're ready to deploy or customize. See next steps above 👆
+
+---
+
+## Troubleshooting Quick Fixes
+
+**Port 3000 in use:**
+```bash
+npm run dev -- --port 3001
+```
+
+**Dependencies error:**
+```bash
+rm -rf node_modules
+npm install --legacy-peer-deps
+npm run dev
+```
+
+**Weird spacing/styling:**
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+**Next**: [DEPLOYMENT.md](DEPLOYMENT.md) for deploying to Vercel  
+**Or**: [CONTENT_UPDATE.md](CONTENT_UPDATE.md) for updating your content
+
+Last Updated: December 26, 2025
+
 
 1. Push your code to GitHub
 2. Go to https://vercel.com/new
