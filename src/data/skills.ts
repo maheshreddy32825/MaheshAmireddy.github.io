@@ -32,7 +32,7 @@ export const skillCategories = [
   },
   {
     category: "Security",
-    skills: ["Container Image Scanning", "Veracode SAST", "IaC Security Scanning", "SOC 2 & PCI Compliance"]
+    skills: ["SonarQube", "Veracode SAST", "OWASP", "OPA (Open Policy Agent)", "Container Image Scanning", "IaC Security Scanning", "SOC 2 & PCI Compliance"]
   }
 ];
 

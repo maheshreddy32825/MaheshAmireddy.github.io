@@ -86,6 +86,24 @@ const CommandPalette = () => {
       icon: '📧',
       action: () => (window.location.href = 'mailto:amireddym0144@gmail.com'),
       category: 'Social'
+    },
+    {
+      id: 'theme-toggle',
+      title: 'Toggle Dark Mode',
+      description: 'Switch between light and dark theme',
+      icon: '🌓',
+      action: () => {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        if (sunIcon && moonIcon) {
+          sunIcon.classList.toggle('hidden');
+          moonIcon.classList.toggle('hidden');
+        }
+      },
+      category: 'Settings'
     }
   ];
 
